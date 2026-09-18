@@ -22,6 +22,11 @@ df["월"] = df["주문일자"].dt.month
 print(df.head())
 print(df.tail())
 
+#카테고리별 매출 합계
+by_cat = df.groupby("카테고리")["매출액"].sum()
+print(by_cat.head())
+
+# 월별 x 카테고리별, 합계와 평균
 report = df.groupby(["월", "카테고리"])["매출액"].agg(
   총매출="sum", 평균매출="mean", 거래건수="count"
 )
